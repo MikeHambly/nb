@@ -345,7 +345,9 @@ _sed_i() {
   then # GNU
     sed -i "${@}"
   else # BSD
-    sed -i '' "${@}"
+    # Note: Some BSD implementations of sed (e.g. OpenBSD) require that
+    #       there be no space between -i and the inplace filename extension.
+    sed -i''  "${@}"
   fi
 }
 
